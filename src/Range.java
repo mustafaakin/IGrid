@@ -12,7 +12,7 @@ public class Range {
 	ArrayList<Point> points = new ArrayList<Point>();
 
 	public void addPoint(Point p) {
-		p.range = this;
+		p.ranges[dimension] = this;
 		points.add(p);
 		double value = p.values[dimension];
 		if (value < start)
@@ -26,4 +26,8 @@ public class Range {
 		return points.toString();
 	}
 
+	
+	public boolean inRange(Point p){
+		return start < p.values[dimension] && end > p.values[dimension];
+	}
 }

@@ -60,6 +60,8 @@ public class Tester {
 		System.out.println("Eucledian : " + eucledian(ps, pTest));
 		System.out.println("Manhattan : " + manhattan(ps, pTest));
 
+		
+		System.out.println("IGrid: " + iGrid.search(pTest));
 	}
 
 }

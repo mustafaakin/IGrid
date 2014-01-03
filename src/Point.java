@@ -1,6 +1,6 @@
 
 public class Point {
-	Range range;
+	Range[] ranges;
 	static int counter = 0;
 	
 	int id;
@@ -8,6 +8,7 @@ public class Point {
 	public Point(double... values){
 		this.values = values;
 		id = counter;
+		ranges = new Range[values.length];
 		counter++;
 	}
 	
