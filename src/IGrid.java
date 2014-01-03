@@ -55,4 +55,12 @@ public class IGrid {
 			}
 		}
 	}
+	
+	public Range[] searchDimensions(Point reference){
+		Range[] ranges = new Range[D];
+		for(int i = 0; i < D; i++){
+			ranges[i] = dimensions[i].getPoints(reference);
+		}
+		return ranges;
+	}
 }

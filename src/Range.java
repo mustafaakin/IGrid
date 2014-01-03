@@ -20,4 +20,9 @@ public class Range {
 			end = value;
 	}
 
+	@Override
+	public String toString() {
+		return points.toString();
+	}
+
 }

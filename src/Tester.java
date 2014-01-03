@@ -15,6 +15,12 @@ public class Tester {
 		Point[] ps = new Point[]{p1,p2,p3, p4, p5, p6, p7, p8};
 		IGrid iGrid = new IGrid(ps);
 		iGrid.printDatabase();
+		
+		Point pTest = new Point(0.5, 0.4, 0.3, 0.6);
+		Range[] r = iGrid.searchDimensions(pTest);
+		for(int i = 0; i < r.length; i++){
+			System.out.println(r[i]);
+		}
 	}
 
 }
