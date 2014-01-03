@@ -18,14 +18,12 @@ public class IGrid {
 		double theta = 0.5;
 		dimensions = new Dimension[D];
 		final int Kd = (int)(theta * D);
-		System.out.println(Kd);
 		final int slice = N / Kd;
-		System.out.println(slice);
 		// For every dimension
 		for(int i = 0; i < D; i++){
 			// Initialize the Dimension object which holds all ranges (with points) for a dimension
 			final int currentDimension = i;
-			dimensions[i] = new Dimension(Kd);
+			dimensions[i] = new Dimension(i, Kd);
 			
 			// Sort the values according to their i'th dimension
 			Arrays.sort(allValues, new Comparator<Point>(){
@@ -42,19 +40,18 @@ public class IGrid {
 				Point p = allValues[j];
 				int destination = j / slice;
 				dimensions[i].addPoint(p, destination);
-				//System.out.println(p);
 			}			
-			System.out.println("");
 		}
 	}
 	
-	public void printDimensions(){
+	public void printDatabase(){
 		for(int i = 0; i < D; i++){
 			System.out.println("DIMENSION " + i);
 			Range[] r = dimensions[i].ranges;
 			for(int j = 0; j < r.length; j++){
-				System.out.println("\tRange " + j);
+				System.out.println("\tRange " + j + " from (" + r[j].start + ") to (" + r[j].end + ")");
 				System.out.println("\t" + r[j].points);
+				System.out.println();
 			}
 		}
 	}

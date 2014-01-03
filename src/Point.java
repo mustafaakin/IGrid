@@ -16,6 +16,6 @@ public class Point {
 		for(double d : values){
 			str += String.format("%.2f, ", d);
 		}
-		return "Point #" + id + " (" + str.substring(0, str.length() - 2) + ")";
+		return "#" + id + "#(" + str.substring(0, str.length() - 2) + ")";
 	}
 }
