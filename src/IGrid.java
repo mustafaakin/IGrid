@@ -21,6 +21,7 @@ public class IGrid {
 		// For every dimension
 		for(int i = 0; i < D; i++){
 			// For every point
+			System.out.println("Dimension " + i);
 			final int currentDimension = i;
 			Arrays.sort(allValues, new Comparator<Point>(){
 				@Override
@@ -29,11 +30,12 @@ public class IGrid {
 				}
 				
 			});
-			for(int j = 0; j < allValues.length; i++){
+			for(int j = 0; j < allValues.length; j++){
 				// Put the point to respective dimension
 				Point p = allValues[j];
-
+				System.out.println(p);
 			}			
+			System.out.println("");
 		}
 	}
 }
