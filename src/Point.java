@@ -1,5 +1,6 @@
 
 public class Point {
+	Range range;
 	static int counter = 0;
 	
 	int id;

@@ -12,6 +12,7 @@ public class Range {
 	ArrayList<Point> points = new ArrayList<Point>();
 
 	public void addPoint(Point p) {
+		p.range = this;
 		points.add(p);
 		double value = p.values[dimension];
 		if (value < start)

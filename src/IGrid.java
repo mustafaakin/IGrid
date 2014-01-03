@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class IGrid {
 	Point[] allValues;
@@ -41,6 +43,7 @@ public class IGrid {
 				int destination = j / slice;
 				dimensions[i].addPoint(p, destination);
 			}			
+			dimensions[i].setRanges();
 		}
 	}
 	
@@ -54,6 +57,24 @@ public class IGrid {
 				System.out.println();
 			}
 		}
+	}
+	
+	public Point search(Point reference){
+		Range[] ranges = searchDimensions(reference);
+		HashSet<Point> dists = new HashSet<Point>();
+		for(Range r: ranges){
+			for(Point p : r.points){
+				dists.add(p);
+			}
+		}
+		// Reducing the duplicates
+		
+		while(dists.iterator().hasNext()){
+			Point p = dists.iterator().next();
+			
+		}
+		
+		return null;
 	}
 	
 	public Range[] searchDimensions(Point reference){
