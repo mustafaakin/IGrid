@@ -1,4 +1,3 @@
-
 public class Tester {
 
 	public static void main(String[] args) {
@@ -10,16 +9,15 @@ public class Tester {
 		Point p6 = new Point(0.3, 0.5, 0.1, 0.3);
 		Point p7 = new Point(0.4, 0.2, 0.5, 0.2);
 		Point p8 = new Point(0.9, 0.7, 0.8, 0.1);
-		
-		
-		Point[] ps = new Point[]{p1,p2,p3, p4, p5, p6, p7, p8};
+
+		Point[] ps = new Point[] { p1, p2, p3, p4, p5, p6, p7, p8 };
 		IGrid iGrid = new IGrid(ps);
 		iGrid.printDatabase();
-		
-		Point pTest = new Point(0.5, 0.4, 0.3, 0.6);
+
+		Point pTest = new Point(0.45, 0.4, 0.3, 0.6);
 		Range[] r = iGrid.searchDimensions(pTest);
-		for(int i = 0; i < r.length; i++){
-			System.out.println(r[i]);
+		for (int i = 0; i < r.length; i++) {
+			System.out.println("Dimension " + i + " " + r[i]);
 		}
 	}
 

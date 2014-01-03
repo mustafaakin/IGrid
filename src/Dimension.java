@@ -30,7 +30,21 @@ public class Dimension {
 		} else {
 			for (int i = 0; i < ranges.length; i++) {
 				Range curr = ranges[i];
-				if (value >= curr.start && value <= curr.end) {
+				double lower, higher;
+				
+				if ( i == 0){
+					lower = curr.start; 
+				} else {
+					lower = (curr.start + ranges[i-1].start) / 2;
+				}
+				
+				if ( i == ranges.length - 1){
+					higher = curr.end; 
+				} else {
+					higher = (curr.end+ ranges[i+1].end) / 2;
+				}
+				
+				if (value >= lower && value <= higher) {
 					return curr;
 				}
 			}
