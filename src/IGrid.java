@@ -9,8 +9,8 @@ public class IGrid {
 	Point[] allValues;
 	Dimension[] dimensions;
 	int D;
-	final int P = 1;
-	
+	final double P = 1;
+	final double theta = 0.75;
 
 	public IGrid(Point[] values) {
 		allValues = values;
@@ -21,10 +21,10 @@ public class IGrid {
 		final int N = allValues.length;
 		D = allValues[0].values.length; // One of points length gives the
 										// dimension
-		double theta = 0.5;
 		dimensions = new Dimension[D];
 		final int Kd = (int) (theta * D);
-		final int slice = N / Kd;
+		final int slice = (int) Math.ceil((double) N / (double) Kd); 
+
 		// For every dimension
 		for (int i = 0; i < D; i++) {
 			// Initialize the Dimension object which holds all ranges (with
@@ -71,10 +71,13 @@ public class IGrid {
 		HashSet<Point> dists = new HashSet<Point>();
 		// Removing the duplicates
 		for (Range r : ranges) {
-			for (Point p : r.points) {
-				dists.add(p);
+			// TODO: Find what's wrong
+			if (r != null) {
+				for (Point p : r.points) {
+					dists.add(p);
+				}
 			}
-		}		
+		}
 		// Find the distance
 		Iterator<Point> it = dists.iterator();
 		double maxDist = Double.MIN_VALUE;
@@ -83,17 +86,18 @@ public class IGrid {
 			Point p = it.next();
 			double distance = 0;
 			for (int i = 0; i < D; i++) {
-				Range r = p.ranges[i]; 
+				Range r = p.ranges[i];
 				if (r.inRange(reference)) {
 					double val1 = p.values[i], val2 = reference.values[i];
-					distance += Math.pow( ( 1 - Math.abs(val1-val2) / (r.end - r.start)) , P);					
+					distance += Math.pow((1 - Math.abs(val1 - val2)
+							/ (r.end - r.start)), P);
 				}
 			}
-			if ( distance > maxDist){
+			if (distance > maxDist) {
 				closest = p;
 				maxDist = distance;
 			}
-	
+
 		}
 
 		return closest;

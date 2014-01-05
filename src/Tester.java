@@ -36,7 +36,7 @@ public class Tester {
 		}	
 		return result;
 	}
-	
+		
 	public static void main(String[] args) {
 		Point p1 = new Point(0.5, 0.9, 0.6, 0.7);
 		Point p2 = new Point(0.2, 0.6, 0.4, 0.6);

@@ -1,16 +1,22 @@
 
 public class Point {
 	Range[] ranges;
+	String key;
 	static int counter = 0;
 	
-	int id;
 	double[] values;
-	public Point(double... values){
+	public Point(String key, double... values){
+		this.key = key;
 		this.values = values;
-		id = counter;
 		ranges = new Range[values.length];
-		counter++;
 	}
+
+	public Point(double... values){
+		this.key = "" + counter++;
+		this.values = values;
+		ranges = new Range[values.length];
+	}
+
 	
 	@Override
 	public String toString() {
@@ -18,6 +24,10 @@ public class Point {
 		for(double d : values){
 			str += String.format("%.2f, ", d);
 		}
-		return "#" + id + "#(" + str.substring(0, str.length() - 2) + ")";
+		return "#" + key + "#(" + str.substring(0, str.length() - 2) + ")";
+	}
+	
+	public String getKey() {
+		return key;
 	}
 }
