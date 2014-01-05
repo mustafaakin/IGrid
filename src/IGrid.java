@@ -74,9 +74,7 @@ public class IGrid {
 			for (Point p : r.points) {
 				dists.add(p);
 			}
-		}
-		System.out.println("Size: " + dists.size());
-		
+		}		
 		// Find the distance
 		Iterator<Point> it = dists.iterator();
 		double maxDist = Double.MIN_VALUE;

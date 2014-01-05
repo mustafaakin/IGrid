@@ -42,7 +42,7 @@ public class Tester {
 		Point p2 = new Point(0.2, 0.6, 0.4, 0.6);
 		Point p3 = new Point(0.1, 0.8, 0.3, 0.1);
 		Point p4 = new Point(0.5, 0.3, 0.2, 0.4);
-		Point p5 = new Point(0.6, 0.1, 0.4, 0.6);
+		Point p5 = new Point(10.6, 0.1, 0.4, 0.6);
 		Point p6 = new Point(0.3, 0.5, 0.1, 0.3);
 		Point p7 = new Point(0.4, 0.2, 0.5, 0.2);
 		Point p8 = new Point(0.9, 0.7, 0.8, 0.1);
@@ -57,11 +57,12 @@ public class Tester {
 			System.out.println("Dimension " + i + " " + r[i]);
 		}
 		
+		System.out.println();
+		 
+		System.out.println("Query     : " + pTest);
 		System.out.println("Eucledian : " + eucledian(ps, pTest));
-		System.out.println("Manhattan : " + manhattan(ps, pTest));
-
-		
-		System.out.println("IGrid: " + iGrid.search(pTest));
+		System.out.println("Manhattan : " + manhattan(ps, pTest));		
+		System.out.println("IGrid     : " + iGrid.search(pTest));
 	}
 
 }
