@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class SampleData {
-	final static int RUNS = 20;
+	final static int RUNS = 10;
 	final static int QUERIES = 100;
 
 	public static Integer[] randomIndexes(int range, int n) {
@@ -102,7 +102,7 @@ public class SampleData {
 		//tests.add(new TestRun("ionosphere.data", 0, 1, false));
 		tests.add(new TestRun("spambase.data", 0, 1, false));
 
-		double thetas[] = new double[] { 0.05, 0.1, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1, 1.10};
+		double thetas[] = new double[] { 0.001, 0.002, 0.003, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1, 1.10};
 		double Ps[] = new double[] { 0.125, 0.25, 0.5, 0.75, 1, 1.25, 1.50, 1.75, 2, 2.25, 2.5, 3, 4, 5};
 
 		ExecutorService exec = Executors.newFixedThreadPool(8);
@@ -116,7 +116,7 @@ public class SampleData {
 								try {
 									double result = testRun(tr, theta, P) * 100;
 									System.out.println(String.format(
-											"%30s\t%.2f\t%.2f\t%.1f", tr.filename, theta,
+											"%30s\t%.3f\t%.3f\t%.1f", tr.filename, theta,
 											P, result));
 								} catch (Exception ex) {
 									// ex.printStackTrace();
