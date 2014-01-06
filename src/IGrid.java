@@ -19,7 +19,7 @@ public class IGrid {
 		extractPoints();
 	}
 
-	private void extractPoints() {
+	public void extractPoints() {
 		final int N = allValues.length;
 		D = allValues[0].values.length; // One of points length gives the
 										// dimension

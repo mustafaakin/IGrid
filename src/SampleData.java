@@ -2,9 +2,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SampleData {
-	final static int RUNS = 100;
+	final static int RUNS = 20;
 	final static int QUERIES = 100;
 
 	public static Integer[] randomIndexes(int range, int n) {
@@ -34,7 +36,7 @@ public class SampleData {
 		}
 	}
 
-	public static double run(TestRun test, double theta, double P)
+	public static double testRun(TestRun test, double theta, double P)
 			throws Exception {
 		double total = 0;
 		for (int run = 0; run < RUNS; run++) {
@@ -73,7 +75,8 @@ public class SampleData {
 
 			Point[] ps = new Point[databasePoints.size()];
 			ps = databasePoints.toArray(ps);
-			IGrid ig = new IGrid(ps, P, theta);
+			MyIGrid ig = new MyIGrid(ps, P, theta);
+
 			// ig.printDatabase();
 
 			int count = 0;
@@ -94,25 +97,37 @@ public class SampleData {
 
 	public static void main(String[] args) throws Exception {
 		ArrayList<TestRun> tests = new ArrayList<TestRun>();
-		tests.add(new TestRun("glass.data", 1,1, false));
-		tests.add(new TestRun("segmentation.data", 1, 0, true));	
-		tests.add(new TestRun("ionosphere.data", 0, 1, false));	
+		//tests.add(new TestRun("glass.data", 1,1, false));
+		//tests.add(new TestRun("segmentation.data", 1, 0, true));
+		//tests.add(new TestRun("ionosphere.data", 0, 1, false));
 		tests.add(new TestRun("spambase.data", 0, 1, false));
 
-		double thetas[] = new double[] { 0.25, 0.5, 0.75, 1, 2, 5, 10 };
-		double Ps[] = new double[] { 0.25, 0.5, 0.75, 1 };
+		double thetas[] = new double[] { 0.05, 0.1, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1, 1.10};
+		double Ps[] = new double[] { 0.125, 0.25, 0.5, 0.75, 1, 1.25, 1.50, 1.75, 2, 2.25, 2.5, 3, 4, 5};
 
-		for (TestRun tr : tests) {
-			for (double theta : thetas) {
-				for (double P : Ps) {
-					try {
-						double result = run(tr, theta, P) * 100;
-						System.out.println(String.format("%30s %.2f %.2f %.1f", tr.filename, theta, P, result));
-					} catch (Exception ex) {						
-						ex.printStackTrace();
+		ExecutorService exec = Executors.newFixedThreadPool(8);
+		try {
+			for (final TestRun tr : tests) {				
+				for (final double theta : thetas) {
+					for (final double P : Ps) {
+						exec.submit(new Runnable(){
+							@Override
+							public void run() {
+								try {
+									double result = testRun(tr, theta, P) * 100;
+									System.out.println(String.format(
+											"%30s\t%.2f\t%.2f\t%.1f", tr.filename, theta,
+											P, result));
+								} catch (Exception ex) {
+									// ex.printStackTrace();
+								}
+							}
+						});
 					}
 				}
-			}
+			}						
+		} finally {
+			exec.shutdown();
 		}
 
 	}

@@ -30,7 +30,7 @@ public class Dimension {
 
 	public Range getPoints(Point reference) {
 		double value = reference.values[dimension];
-		// TODO: Slow, temprorary method requires O(n), could be reduced to
+		// TODO: Slow, temporary method requires O(n), could be reduced to
 		// O(logn) with binary search
 		for (int i = 0; i < ranges.length; i++) {
 			Range curr = ranges[i];

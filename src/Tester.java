@@ -1,3 +1,5 @@
+
+
 public class Tester {
 	public static Point eucledian(Point[] points, Point reference){
 		int N = points.length;
@@ -48,7 +50,7 @@ public class Tester {
 		Point p8 = new Point(0.9, 0.7, 0.8, 0.1);
 
 		Point[] ps = new Point[] { p1, p2, p3, p4, p5, p6, p7, p8 };
-		IGrid iGrid = new IGrid(ps, 1, 0.5);
+		MyIGrid iGrid = new MyIGrid(ps, 1, 0.5);
 		iGrid.printDatabase();
 
 		Point pTest = new Point(0.6, 0.1, 0.4, 0.6);
@@ -63,6 +65,10 @@ public class Tester {
 		System.out.println("Eucledian : " + eucledian(ps, pTest));
 		System.out.println("Manhattan : " + manhattan(ps, pTest));		
 		System.out.println("IGrid     : " + iGrid.search(pTest));
+		
+		
+		
+		
 	}
 
 }
