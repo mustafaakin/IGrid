@@ -40,7 +40,7 @@ public class SampleData {
 			throws Exception {
 		double total = 0;
 		for (int run = 0; run < RUNS; run++) {
-			Scanner scan = new Scanner(new File("/home/mustafa/cs531/"
+			Scanner scan = new Scanner(new File("data/"
 					+ test.filename));
 			ArrayList<Point> databasePoints = new ArrayList<Point>();
 			ArrayList<Point> queryPoints = new ArrayList<Point>();
@@ -98,9 +98,9 @@ public class SampleData {
 	public static void main(String[] args) throws Exception {
 		ArrayList<TestRun> tests = new ArrayList<TestRun>();
 		//tests.add(new TestRun("glass.data", 1,1, false));
-		//tests.add(new TestRun("segmentation.data", 1, 0, true));
+		tests.add(new TestRun("segmentation.data", 1, 0, true));
 		//tests.add(new TestRun("ionosphere.data", 0, 1, false));
-		tests.add(new TestRun("spambase.data", 0, 1, false));
+		//tests.add(new TestRun("spambase.data", 0, 1, false));
 
 		double thetas[] = new double[] { 0.001, 0.002, 0.003, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1, 1.10};
 		double Ps[] = new double[] { 0.125, 0.25, 0.5, 0.75, 1, 1.25, 1.50, 1.75, 2, 2.25, 2.5, 3, 4, 5};
