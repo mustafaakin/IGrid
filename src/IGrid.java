@@ -9,10 +9,12 @@ public class IGrid {
 	Point[] allValues;
 	Dimension[] dimensions;
 	int D;
-	final double P = 1;
-	final double theta = 0.75;
+	double P = 1;
+	double theta = 0.75;
 
-	public IGrid(Point[] values) {
+	public IGrid(Point[] values, double P, double theta) {
+		this.P = P;
+		this.theta = theta;
 		allValues = values;
 		extractPoints();
 	}

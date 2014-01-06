@@ -48,7 +48,7 @@ public class Tester {
 		Point p8 = new Point(0.9, 0.7, 0.8, 0.1);
 
 		Point[] ps = new Point[] { p1, p2, p3, p4, p5, p6, p7, p8 };
-		IGrid iGrid = new IGrid(ps);
+		IGrid iGrid = new IGrid(ps, 1, 0.5);
 		iGrid.printDatabase();
 
 		Point pTest = new Point(0.6, 0.1, 0.4, 0.6);
